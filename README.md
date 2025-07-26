@@ -33,7 +33,7 @@ SICE-Project/
 | Ankit       | ingestion/, anomaly-detection/, forecasting/        |
 | Mansi       | recommendation/, graph-context/                     |
 | Komal       | alerting/, dashboard/, chatbot/                     |
-| All         | frontend/, infra/, docs/                            |
+| Vibhor      | frontend/, infra/, docs/, overall/                   |
 
 ---
 
