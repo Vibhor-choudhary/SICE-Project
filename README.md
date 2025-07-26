@@ -1,149 +1,188 @@
 # 🧠 SICE Project — Smart Inventory Context Engine
 
-AI-powered, real-time, context-aware inventory platform for edge retail systems.
+AI-powered, real-time, context-aware inventory platform built for next-gen retail systems — running on edge, powered by explainable AI, and enhanced with dynamic UI components.
 
 ---
 
 ## 📁 Project Folder Structure & Ownership
 
+```bash
 SICE-Project/
 ├── services/
-│ ├── ingestion/ ← Ankit (Primary)
-│ ├── anomaly-detection/ ← Ankit (Primary)
-│ ├── forecasting/ ← Ankit (Primary)
-│ ├── recommendation/ ← Mansi (Primary)
-│ ├── graph-context/ ← Mansi (Primary)
-│ ├── alerting/ ← Komal (Primary)
-│ └── dashboard/ ← Komal (Primary)
-├── chatbot/ ← Komal (Also owns this whole service)
-├── infra/ ← Shared (Infrastructure setup)
-├── frontend/ ← Shared (User interface)
-├── data/ ← Shared (Data files, if any)
-├── docs/ ← Shared (Team docs, workflows, prompts)
-├── README.md ← Project instructions (you're here!)
-
-yaml
-Copy
-Edit
+│   ├── ingestion/            ← Ankit (Primary)
+│   ├── anomaly-detection/    ← Ankit (Primary)
+│   ├── forecasting/          ← Ankit (Primary)
+│   ├── recommendation/       ← Mansi (Primary)
+│   ├── graph-context/        ← Mansi (Primary)
+│   ├── alerting/             ← Komal (Primary)
+│   └── dashboard/            ← Komal (Primary)
+├── chatbot/                  ← Komal (Also owns this whole service)
+├── infra/                    ← Shared (Infrastructure setup)
+├── frontend/                 ← Shared (User interface)
+├── data/                     ← Shared (Data files, if any)
+├── docs/                     ← Shared (Team docs, workflows, prompts)
+├── README.md                 ← Project instructions (you're here!)
+```
 
 ---
 
-## 👩‍💻 Team Responsibilities
+## 👥 Team Responsibilities
 
-| Member | Primary Areas |
-|--------|----------------|
-| Ankit  | Ingestion, Anomaly Detection, Forecasting |
-| Mansi  | Recommendation, Context Graph |
-| Komal  | Alerting, Dashboard, Chatbot |
-| Shared | Frontend, Infra, Docs |
+| Team Member | Responsibility Domains                              |
+|-------------|-----------------------------------------------------|
+| Ankit       | ingestion/, anomaly-detection/, forecasting/        |
+| Mansi       | recommendation/, graph-context/                     |
+| Komal       | alerting/, dashboard/, chatbot/                     |
+| All         | frontend/, infra/, docs/                            |
 
 ---
 
-## 🧩 What’s with the `.gitkeep` Files?
+## 📂 Why We Use `.gitkeep`
 
-Git doesn't track empty folders. So `.gitkeep` is a dummy file placed to:
-- Prevent Git from ignoring empty directories
-- Help teammates see the full folder structure
+Git does **not** track empty folders by default. `.gitkeep` is a placeholder to:
+- Keep our folder structure visible
+- Ensure team clarity during early setup
 
-✅ You can delete it later once real code is added.
+✅ Once you add real code, feel free to delete `.gitkeep`.
 
 ---
 
 ## 🔁 Daily Git & GitHub Workflow
 
-Follow these steps **every time you work**:
-
-### ✅ Step 1: Get the Latest Official Code
+### 1️⃣ Pull the Latest Code
 ```bash
 git pull origin main
-✅ Step 2: Create a New Branch for Your Task
-bash
-Copy
-Edit
-git checkout -b feature/your-task-name
-✅ Step 3: Write Code in Your Assigned Folder
-Examples:
+```
+> Ensures you're working on the most recent version
 
-Komal → /chatbot/ or /services/alerting/
+### 2️⃣ Create Your Feature Branch
+```bash
+git checkout -b feature/<task-name>
+```
+> Isolate your work and prevent overwriting others’ code
 
-Ankit → /services/ingestion/
+### 3️⃣ Do Your Work
+Edit or add code in your assigned folder:
+- Ankit → `/services/ingestion/`
+- Mansi → `/services/recommendation/`
+- Komal → `/chatbot/`, `/dashboard/`
 
-Mansi → /services/recommendation/
-
-✅ Step 4: Save Progress (Commit Your Work)
-bash
-Copy
-Edit
+### 4️⃣ Save Your Progress
+```bash
 git add .
-git commit -m "feat: added Kafka consumer for inventory ingestion"
-✅ Step 5: Push Your Work to GitHub
-bash
-Copy
-Edit
-git push origin feature/your-task-name
-🔍 Step 6: Open a Pull Request
-Go to GitHub → SICE-Project
+git commit -m "feat: implemented XYZ"
+```
+> Save small, meaningful updates
 
-Click "Compare & Pull Request" or go to Pull Requests tab → New PR
+### 5️⃣ Push to GitHub
+```bash
+git push origin feature/<task-name>
+```
+> Upload your branch to GitHub
 
-Base = main, Compare = your feature branch
+### 6️⃣ Open a Pull Request (PR)
+- Visit GitHub → `Pull Requests` → `New PR`
+- Base = `main`, Compare = your feature branch
+- Fill:
+  - Title: Clear task name
+  - Description: What’s in this PR, what to test
+  - Reviewer: Tag your teammate (Ankit, Mansi, Komal)
 
-Fill in:
-
-Title: Short summary of task
-
-Description: What you built, how it works, anything to test
-
-Assign Reviewer: Tag your teammate (Ankit, Mansi, or Komal)
-
-✅ No PR can be merged without review approval.
-
-✅ Step 7: Review, Update, and Merge
-If changes are requested:
-
-bash
-Copy
-Edit
-# Make changes
+### 7️⃣ Address Feedback & Merge
+- Fix suggestions:
+```bash
 git add .
-git commit -m "fix: addressed review comments"
-git push origin your-branch
-Once approved, use Squash and Merge from GitHub.
+git commit -m "fix: feedback changes"
+git push origin feature/<task-name>
+```
+- Once approved → `Squash and Merge`
 
-📝 Commit Message Format
-Use this format:
+---
 
-arduino
-Copy
-Edit
-<type>: <short clear description>
-Examples:
+## ✍️ Commit Message Style Guide
 
-feat: added phantom inventory alert logic
+```bash
+<type>: <short description>
+```
 
-fix: resolved bug in recommendation API
+**Examples:**
+- `feat: added inventory prediction model`
+- `fix: resolved dashboard UI bug`
+- `docs: updated chatbot setup instructions`
 
-docs: added chatbot usage guide
+**Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-Types to use:
+---
 
-feat: New feature
+## 🌱 Branch Naming Guide
 
-fix: Bug fix
+| Task Type   | Example Branch Name              |
+|-------------|----------------------------------|
+| Feature     | `feature/store-map-widget`       |
+| Bug Fix     | `fix/api-retry-timeout`          |
+| Refactor    | `refactor/alerting-handler`      |
+| UI Update   | `feature/product-card-component` |
 
-docs: Documentation change
+---
 
-style: Formatting only
+## ⚙️ How to Run Frontend 
 
-refactor: Code restructure
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-test: Adding tests
+💡 Use any AI’s built-in terminal and Git sidebar for easier flow.
 
-chore: Non-code maintenance
+---
 
-🌿 Branch Naming Convention
-Task Type	Format Example
-New Feature	feature/forecasting-api
-Bug Fix	fix/api-timeout-issue
-Refactor	refactor/alert-routing
-Frontend UI	feature/product-card-ui
+## 💡 Best Practices (Frontend + AI)
+
+### 📦 Components
+Organize reusable UI elements:
+```bash
+/components/ui/
+  Button.jsx
+  InputField.jsx
+  Badge.jsx
+  Modal.jsx
+  Loader.jsx
+```
+
+### 🎨 Assets & Visual Tools
+| Tool         | Purpose                                |
+|--------------|-----------------------------------------|
+| Rive         | Button morphs, chat avatar, live icons |
+| LottieFiles  | Animations (e.g., success, warning)     |
+| Spline       | 3D visuals, hero sections               |
+| ShaderGradient | Live gradient backgrounds            |
+| Icon8        | App icons (search, filter, etc.)        |
+| 21st.dev     | Trendy inputs, forms, panels            |
+
+### 🧠 AI Tips
+- Track branch 
+- Test prompts in context: `/docs/prompts.md`
+- Keep commits and folders atomic (1 component = 1 folder)
+
+---
+
+## 📋 Collaboration Checklist
+
+- [ ] Pull from `main` before creating a branch
+- [ ] Commit frequently with clear messages
+- [ ] Push updates after each coding session
+- [ ] Create PRs early and tag reviewers
+- [ ] Be open to feedback and ask for help
+
+---
+
+## 📚 Learning Resources
+
+- 📘 [Git Basics — Atlassian](https://www.atlassian.com/git/tutorials)
+- 💬 [Cursor AI Docs](https://docs.cursor.sh)
+- 🔁 [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+
+---
+
+## ✨ Let’s build something exceptional — one clean commit at a time!
