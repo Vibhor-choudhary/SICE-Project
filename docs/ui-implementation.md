@@ -1,0 +1,56 @@
+- **Login Page Structure**
+  - **Page Container**: `card`
+  - **Visual Section (Left)**
+    - **Animated Background (ShaderGradient)**: Custom Component
+    - **3D Logo/Graphic (Spline)**: Custom Component
+  - **Form Section (Right)**
+    - **Company Logo**: `avatar`
+    - **Title**: `h1` (or similar heading)
+    - **Subtitle**: `p` (or similar text element)
+    - **Email Input Field**: `input` with `label`
+    - **Password Input Field**: `input` with `label` and `button` (for toggle)
+    - **Sign In Button**: `button`
+    - **SSO Login Buttons**: `button`
+    - **Footer Links**: `a` (or similar link element)
+
+- **Dashboard Page Structure**
+  - **Main Container**: `div` or `main`
+  - **Header**: `card` or custom component
+    - **Logo & App Name**: `avatar` and `h2`
+    - **Global Search Bar**: `input`
+    - **User Profile Dropdown**: `dropdown-menu` with `avatar`
+      - **Logout Button**: `button`
+  - **Kanban Board Container**
+    - **Board Header**: `div`
+      - **Title**: `h2`
+      - **Filters**: `select`
+      - **Clear Filters Button**: `button`
+      - **"Add New Deal" Button**: `button`
+    - **Columns (Scrollable Horizontally)**: `scroll-area`
+      - **Column**: `card`
+        - **Column Header**: `div`
+          - **Title**: `h3`
+          - **Deal Count Badge**: `badge`
+        - **Deal Cards (Draggable)**: `card`
+          - **Drag Handle (Icon)**: `icon`
+          - **Deal Title**: `h4`
+          - **Company Name**: `p`
+          - **Deal Value**: `p`
+          - **Assignee Avatar**: `avatar`
+          - **Status Badge**: `badge`
+
+- **"Add New Deal" Modal Structure**
+  - **Modal Container**: `dialog`
+  - **Modal Header**: `dialog-header`
+    - **Title**: `dialog-title`
+    - **Close Button (X Icon)**: `button`
+  - **Modal Body (Form)**: `form`
+    - **Deal Title Input**: `input` with `label`
+    - **Company Name Input**: `input` with `label`
+    - **Deal Value Input**: `input` with `label`
+    - **Assignee Dropdown**: `select` with `label`
+    - **Status Dropdown**: `select` with `label`
+    - **Description Textarea**: `textarea` with `label`
+  - **Modal Footer**: `dialog-footer`
+    - **Cancel Button**: `button`
+    - **Save Deal Button**: `button`
