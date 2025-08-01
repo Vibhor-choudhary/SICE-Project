@@ -1,0 +1,104 @@
+---
+description: This project-specific rule file serves as the authoritative guide for the AI agent to generate, integrate, and organize UI code for the SICE frontend, combining Shadcn MCP server components for core UI structure with advanced animation and visual tools like Rive, Lottie, Spline, ShaderGradient, Icon8, and 21st.dev. It directs the AI to always prioritize MCP blocks/components for foundational layouts, forms, modals, and navigation, while explicitly instructing how and when to embed or complement these with specialized motion and design assets to achieve a seamless, accessible, responsive, and thematically consistent interface. The rules enforce a disciplined workflow: always list and preview components via MCP before insertion, scaffold static UI first, then wire data and animations through a global motion state store reflecting live API and websocket changes. They also codify accessibility compliance and team collaboration by maintaining version-controlled guidance, ensuring all AI-assisted development produces consistent, high-quality, and maintainable code aligned with the project’s complex, multi-tool frontend vision. This file acts as the project’s constant “source of truth” for AI to contextualize prompts, avoid inconsistency, avoid mixing unsupported UI methods, and systematically deliver a world-class, data-reactive, and visually rich user experience.
+alwaysApply: false
+---
+# SICE Project UI Agent Rules  
+*For Smart Inventory, Smart Experience — leveraging Shadcn MCP, Rive, Lottie, Spline, ShaderGradient, Icon8, and 21st.dev.*
+
+---
+
+## 1. General Principles
+
+- Core UI structure should be built using **Shadcn MCP server components/blocks** whenever available.
+- Use advanced animation/design tools (**Rive, Lottie, Spline, ShaderGradient, Icon8, 21st.dev**) to add microinteractions, 3D visuals, dynamic backgrounds, icons, and modern UI polish.
+- Always maintain **accessibility**, **responsiveness**, and **theming consistency** in all UI elements.
+- Never manually hard-code UI components that exist as MCP blocks unless customization cannot be done with MCP.
+
+---
+
+## 2. Planning & Component Mapping
+
+- For each new feature or screen, list all UI needs in the UX plan (`ux-structure.md`).
+- Map every feature to:
+  - The best matching **Shadcn MCP block/component**.
+  - Additional tools needed for advanced visuals or animations.
+- Maintain a feature-to-component-and-tool mapping in project documentation.
+
+---
+
+## 3. Component & Integration Rules
+
+### A. Shadcn MCP
+
+- Use MCP API exclusively to:
+  - List components/blocks.
+  - Preview demos.
+  - Retrieve and insert UI code.
+- Prefer blocks (composite UI pieces) over atomic components.
+- Insert static UI structure first, then wire event/data logic.
+
+### B. Advanced Visual & Animation Tools
+
+- **Rive**: Animate buttons, badges, avatar states, and microfeedback. Embed as React components inside MCP containers.
+- **Lottie**: Use for onboarding, notifications, and loading animations. Place Lottie components within or alongside MCP blocks.
+- **Spline**: Embed 3D scenes for product views, dashboards, and spatial data. Anchor within MCP layouts.
+- **ShaderGradient**: Implement dynamic background gradients and moods with CSS/custom components. Bind to live app state.
+- **Icon8**: Use systematic SVG icons for nav, badges, and status indicators. Animate icon states based on interaction/data.
+- **21st.dev**: Use accessible and trendy components (cards, forms, inputs) as supplements or replacements when suitable.
+
+---
+
+## 4. Motion State & Live Data Integration
+
+- Implement a global motion state store (Zustand or Redux) to synchronize UI animations and live data-driven visual changes (stock alerts, chat activity, theme shifts).
+- Connect WebSocket/API events to trigger animations across MCP and external visual components.
+
+---
+
+## 5. Demo & Insert Workflow
+
+- Always preview components/blocks via MCP demo endpoint before inserting.
+- Confirm suitability visually and functionally.
+- Insert generated code only after approval.
+- Document notes about feature-specific usage and integration for team clarity.
+
+---
+
+## 6. Accessibility, Theming & Responsiveness
+
+- Components and integrated tools must follow WCAG guidelines.
+- Support light/dark mode theming out-of-the-box.
+- Ensure full responsiveness across devices.
+- Document any necessary overrides or exceptions.
+
+---
+
+## 7. Version Control & Team Practices
+
+- Keep this rule file and UX structure docs versioned alongside source code.
+- Update rules as the product or tech stack evolves.
+- Make onboarding documentation to help new team members understand these guidelines.
+
+---
+
+## 8. Example Feature-Component-Tool Mapping Table
+
+| Feature           | MCP Block/Component     | Additional Tools            | Notes                                    |
+|-------------------|------------------------|-----------------------------|------------------------------------------|
+| Product Card      | `product-card-block`   | Rive, Icon8, ShaderGradient | Animated buttons, stock warning badges   |
+| Inventory Chart   | `dashboard-table`      | Spline, Lottie              | 3D pulse & onboarding animations         |
+| Add/Edit Modal    | `modal`, `form`        | ShaderGradient, 21st.dev    | Gradient backgrounds, animated inputs    |
+| Chatbot           | `chatbot-block`        | Rive, Icon8                 | Animated avatar and status icons         |
+| Stock Alert       | `alert`                | Lottie, Icon8               | Confetti animations, pulsing badges      |
+
+---
+
+## Final Note
+
+- Follow these rules strictly when generating UI with AI agents.
+- Balance MCP usage for structure with rich integration of animation tools for best user experience.
+- Continuously improve the rules as your project and tools evolve.
+
+---
+
+*End of SICE Project UI Agent Rules*
