@@ -3,7 +3,11 @@
 AI-powered, real-time, context-aware inventory platform built for next-gen retail systems — running on edge, powered by explainable AI, and enhanced with dynamic UI components.
 
 ---
+## AI-Based Inventory Optimization for Omnichannel Retail
+Explore our interactive Colab notebook with comprehensive exploratory data analysis on 10,000+ retail records, revealing key optimization patterns and actionable insights:
 
+- 🔗 Colab notebook link: https://colab.research.google.com/drive/11UfLzVPpOsXD3v4WGIpPKApUyLSnPZhn?usp=sharing
+---
 ## 📁 Project Folder Structure & Ownership
 
 ```bash
