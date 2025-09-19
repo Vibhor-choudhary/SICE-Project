@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spline Orb Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .spline-container {
+            width: 100%;
+            height: 500px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.5);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Spline Orb Demo</h1>
+        <p class="subtitle">Interactive 3D orb powered by Spline</p>
+        
+        <div class="spline-container" id="splineContainer">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Loading Spline scene...</p>
+            </div>
+        </div>
+
+        <div id="status"></div>
+    </div>
+
+    <!-- Spline Runtime -->
+    <script src="https://unpkg.com/@splinetool/runtime@1.10.39/build/spline-runtime.min.js"></script>
+    
+    <script>
+        const container = document.getElementById('splineContainer');
+        const loading = document.getElementById('loading');
+        const status = document.getElementById('status');
+
+        function showStatus(message, type = 'info') {
+            status.innerHTML = `<div class="${type}">${message}</div>`;
+        }
+
+        async function loadSplineScene() {
+            try {
+                showStatus('Initializing Spline runtime...', 'info');
+                
+                // Create Spline instance
+                const spline = new Spline();
+                
+                showStatus('Loading orb.spline file...', 'info');
+                
+                // Load the scene
+                await spline.load('./Reactive Orb.spline');
+                
+                showStatus('Creating Spline application...', 'info');
+                
+                // Create the app
+                const app = await spline.createApp();
+                
+                showStatus('Rendering Spline scene...', 'info');
+                
+                // Remove loading indicator
+                loading.style.display = 'none';
+                
+                // Append the Spline app to container
+                container.appendChild(app);
+                
+                showStatus('✅ Spline scene loaded successfully! You can now interact with the orb.', 'success');
+                
+                console.log('Spline scene loaded successfully!');
+                
+            } catch (error) {
+                console.error('Error loading Spline scene:', error);
+                loading.style.display = 'none';
+                showStatus(`❌ Error loading Spline scene: ${error.message}`, 'error');
+            }
+        }
+
+        // Load the scene when page loads
+        window.addEventListener('load', loadSplineScene);
+    </script>
+</body>
+</html> 
